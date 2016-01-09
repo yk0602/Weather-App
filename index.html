@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气查询</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="weatherApp">
+    <div class="container" ng-controller="weatherController">
+        <div class="row">
+            <div class="col-md-1 col-md-offset-5">
+                <select ng-model="city" >
+                    <option value="shenzhen">深圳</option>
+                    <option value="shanghai">上海</option>
+                    <option value="fuyang">阜阳</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary" ng-click="query()">查询</button>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-striped">
+                <caption>{{cities[city]}}天气情况</caption>
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>天气状况</th>
+                        <th>温度</th>
+                        <th>相对湿度</th>
+                        <th>能见度</th>
+                        <th>风力风向</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="x in data">
+                    <td>{{x.date}}</td>
+                    <td>{{x.desciption}}</td>
+                    <td>{{x.tmp}}</td>
+                    <td>{{x.hum}}</td>
+                    <td>{{x.vis}}</td>
+                    <td>{{x.wind}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="./weather.js"></script>
+</body>
+</html>
